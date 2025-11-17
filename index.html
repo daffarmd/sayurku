@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeggieVibe Market | Organic Vegetables</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+
+    <style>
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background-color: #fafaf9;
+        }
+
+        /* Color palette (dari Tailwind-mu, dijadikan CSS biasa) */
+        :root {
+            --veggie-50: #f0fdf4;
+            --veggie-100: #dcfce7;
+            --veggie-200: #bbf7d0;
+            --veggie-300: #86efac;
+            --veggie-400: #4ade80;
+            --veggie-500: #22c55e;
+            --veggie-600: #16a34a;
+            --veggie-700: #15803d;
+            --veggie-800: #166534;
+            --veggie-900: #14532d;
+
+            --citrus-100: #ffedd5;
+            --citrus-500: #f97316;
+            --citrus-600: #ea580c;
+            --citrus-800: #9a3412;
+
+            --mint-100: #ccfbf1;
+            --mint-200: #99f6e4;
+            --mint-800: #115e59;
+
+            --beige-50: #fafaf9;
+            --beige-100: #f5f5f4;
+            --beige-300: #d6d3d1;
+            --beige-500: #78716c;
+            --beige-600: #57534e;
+            --beige-700: #44403c;
+            --beige-800: #292524;
+            --beige-900: #1c1917;
+        }
+
+        .text-veggie-800 {
+            color: var(--veggie-800) !important;
+        }
+
+        .text-veggie-900 {
+            color: var(--veggie-900) !important;
+        }
+
+        .text-beige-600 {
+            color: var(--beige-600) !important;
+        }
+
+        .text-beige-500 {
+            color: var(--beige-500) !important;
+        }
+
+        .text-beige-300 {
+            color: var(--beige-300) !important;
+        }
+
+        .bg-veggie-100 {
+            background-color: var(--veggie-100) !important;
+        }
+
+        .bg-veggie-200 {
+            background-color: var(--veggie-200) !important;
+        }
+
+        .bg-veggie-500 {
+            background-color: var(--veggie-500) !important;
+        }
+
+        .bg-beige-100 {
+            background-color: var(--beige-100) !important;
+        }
+
+        .btn-veggie {
+            background-color: var(--veggie-500);
+            color: #fff;
+        }
+
+        .btn-veggie:hover {
+            background-color: var(--veggie-600);
+            color: #fff;
+        }
+
+        .btn-outline-veggie {
+            border-color: var(--veggie-500);
+            color: var(--veggie-500);
+        }
+
+        .btn-outline-veggie:hover {
+            background-color: var(--veggie-50);
+            border-color: var(--veggie-500);
+            color: var(--veggie-600);
+        }
+
+        .hero-section {
+            background: linear-gradient(to right, #dcfce7, #ccfbf1);
+        }
+
+        .shadow-soft {
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+        }
+
+        .category-icon {
+            width: 80px;
+            height: 80px;
+        }
+
+        footer {
+            background-color: var(--veggie-900);
+        }
+
+        .product-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            background-color: #ffffff;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #22c55e;
+            color: #fff;
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 999px;
+        }
+
+        /* ===========================================  */
+
+        .popular-categories .title-underline {
+            width: 120px;
+            height: 3px;
+            background-color: #84cc16;
+        }
+
+        /* gambar apple kiri */
+        .apple-splash {
+            max-width: 380px;
+            /* perkecil dari default */
+            width: 100%;
+            margin-left: auto;
+            /* dorong agak dekat ke tengah */
+            display: block;
+            margin-left: -40px;
+            /* geser lebih ke kiri */
+            margin-top: -20px;
+            /* sedikit naik (opsional) */
+
+        }
+
+        /* Agar section terlihat lebih seimbang */
+        .popular-categories .row {
+            align-items: center !important;
+        }
+
+
+        /* area track slider */
+        .categories-track {
+            overflow-x: auto;
+            padding-bottom: 8px;
+        }
+
+        /* sembunyikan scrollbar (opsional) */
+        .categories-track::-webkit-scrollbar {
+            display: none;
+        }
+
+        .categories-track {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .category-card {
+            min-width: 260px;
+            /* sedikit dibesarkan supaya pasti overflow di desktop */
+            border-radius: 18px;
+            padding: 16px 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            flex: 0 0 auto;
+        }
+
+        /* warna contoh */
+        .bg-category-1 {
+            background-color: #7dd3fc;
+        }
+
+        .bg-category-2 {
+            background-color: #fb923c;
+        }
+
+        .bg-category-3 {
+            background-color: #22c55e;
+        }
+
+        .bg-category-4 {
+            background-color: #f97373;
+        }
+
+        .category-img {
+            width: 70px;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .nav-round-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 999px;
+            border: 1px solid #84cc16;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            background-color: #e4f7c5;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="SayurKu-Logo.png" alt="Vegetables Logo" class="me-2" style="height:100px; width:auto;">
+            </a>
+
+            <!-- Toggler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Menu -->
+            <div class="collapse navbar-collapse" id="mainNavbar">
+                <!-- Middle nav -->
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-4">
+                    <li class="nav-item">
+                        <a class="nav-link fw-semibold text-success" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary" href="#">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- Right actions -->
+                <div class="d-flex align-items-center gap-3">
+                    <a href="#" class="btn btn-success px-4 py-2 rounded-2">Shop now</a>
+
+                    <a href="#" class="d-flex align-items-center text-success text-decoration-none">
+                        <i data-feather="shopping-bag" class="me-1"></i>
+                        <span>Cart</span>
+                    </a>
+
+                    <a href="#" class="d-flex align-items-center text-success text-decoration-none">
+                        <i data-feather="user" class="me-1"></i>
+                        <span>Log in</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="py-5 mt-5">
+        <div class="container py-4">
+            <div class="row align-items-center">
+                <!-- teks kiri -->
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <p class="text-uppercase text-muted small mb-1">Fresh & Organic</p>
+                    <h1 class="display-4 fw-bold mb-3">
+                        Organic Veggies
+                        <br>Foods <span class="text-success">Healthy</span>
+                    </h1>
+                    <p class="text-muted mb-4">
+                        Dapatkan sayur dan buah organik berkualitas langsung dari petani lokal.
+                        Dikemas segar, higienis, dan siap dikirim ke rumahmu.
+                    </p>
+
+
+                </div>
+
+                <!-- gambar kanan -->
+                <div class="col-lg-6">
+                    <div class="d-flex justify-content-center">
+                        <img src="Vegetable_Basket_PNG_Picture.png" alt="Basket Vegetables" class="img-fluid rounded-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POPULAR CATEGORIES -->
+    <section class="py-5 popular-categories" id="popularCategories">
+        <div class="container">
+            <div class="row align-items-center g-4">
+
+                <!-- KIRI: gambar apple dengan splash air (hanya di desktop) -->
+                <div class="col-lg-5 d-none d-lg-block">
+                    <img src="apple-splash-removebg-preview.png" alt="Fresh Apple" class="img-fluid apple-splash">
+                </div>
+
+                <!-- KANAN: title + slider categories -->
+                <div class="col-12 col-lg-7">
+                    <!-- Title -->
+                    <div class="d-flex flex-column align-items-start mb-4">
+                        <h2 class="fw-bold text-dark mb-1">Popular Categories</h2>
+                        <div class="title-underline mt-1"></div>
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3">
+                        <!-- Tombol kiri -->
+                        <button type="button" class="btn nav-round-btn flex-shrink-0" id="catPrev">
+                            &#8249;
+                        </button>
+
+                        <!-- Track kartu -->
+                        <div class="categories-track d-flex gap-3 flex-nowrap">
+                            <!-- Card 1 -->
+                            <div class="category-card bg-category-1 d-flex align-items-center">
+                                <img src="img/leafy-greens.png" alt="Leafy Greens" class="category-img me-3">
+                                <div>
+                                    <h5 class="mb-1 fw-semibold">Leafy Greens</h5>
+                                    <p class="mb-0 small text-white-50">Fresh & nutritious</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 2 -->
+                            <div class="category-card bg-category-2 d-flex align-items-center">
+                                <img src="img/root-vegetables.png" alt="Root Vegetables" class="category-img me-3">
+                                <div>
+                                    <h5 class="mb-1 fw-semibold text-white">Root Vegetables</h5>
+                                    <p class="mb-0 small text-white-50">Earth's treasures</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 3 -->
+                            <div class="category-card bg-category-3 d-flex align-items-center">
+                                <img src="img/hydroponic.png" alt="Hydroponic" class="category-img me-3">
+                                <div>
+                                    <h5 class="mb-1 fw-semibold text-white">Hydroponic</h5>
+                                    <p class="mb-0 small text-white-50">Water-grown purity</p>
+                                </div>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="category-card bg-category-4 d-flex align-items-center">
+                                <img src="img/seasonal.png" alt="Seasonal Favorites" class="category-img me-3">
+                                <div>
+                                    <h5 class="mb-1 fw-semibold text-white">Seasonal Favorites</h5>
+                                    <p class="mb-0 small text-white-50">Nature's rhythm</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tombol kanan -->
+                        <button type="button" class="btn nav-round-btn flex-shrink-0" id="catNext">
+                            &#8250;
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- OUR ORGANIC PRODUCTS (NEW) -->
+    <section class="py-5 bg-white">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold text-veggie-800 mb-0">Our Organic Products</h2>
+                <a href="#" class="btn btn-outline-success btn-sm px-4 rounded-pill">
+                    View More
+                </a>
+            </div>
+
+            <div class="row g-4">
+                <!-- Grid Products -->
+                <div class="col-lg-9">
+                    <div class="row g-4">
+
+                        <!-- CARD 1 -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="product-card h-100">
+                                <div class="position-relative text-center p-3">
+                                    <img src="http://static.photos/food/240x180/1" class="img-fluid" alt="Product 1">
+                                    <span class="discount-badge">25%</span>
+                                </div>
+                                <div class="px-3 pb-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="text-warning small me-1">
+                                            ★★★★☆
+                                        </div>
+                                        <span class="text-muted small">(4.0)</span>
+                                    </div>
+                                    <p class="mb-1 fw-semibold">Lorem ipsum</p>
+                                    <p class="mb-1">
+                                        <span class="fw-bold fs-6">₹ 35.00</span>
+                                        <span class="text-muted text-decoration-line-through small ms-1">₹ 55.00</span>
+                                    </p>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                        <button class="btn btn-sm btn-success">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 2 -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="product-card h-100">
+                                <div class="position-relative text-center p-3">
+                                    <img src="http://static.photos/food/240x180/2" class="img-fluid" alt="Product 2">
+                                    <span class="discount-badge">25%</span>
+                                </div>
+                                <div class="px-3 pb-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="text-warning small me-1">
+                                            ★★★★☆
+                                        </div>
+                                        <span class="text-muted small">(4.0)</span>
+                                    </div>
+                                    <p class="mb-1 fw-semibold">Lorem ipsum</p>
+                                    <p class="mb-1">
+                                        <span class="fw-bold fs-6">₹ 35.00</span>
+                                        <span class="text-muted text-decoration-line-through small ms-1">₹ 55.00</span>
+                                    </p>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                        <button class="btn btn-sm btn-success">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 3 -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="product-card h-100">
+                                <div class="position-relative text-center p-3">
+                                    <img src="http://static.photos/food/240x180/3" class="img-fluid" alt="Product 3">
+                                    <span class="discount-badge">25%</span>
+                                </div>
+                                <div class="px-3 pb-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="text-warning small me-1">
+                                            ★★★★☆
+                                        </div>
+                                        <span class="text-muted small">(4.0)</span>
+                                    </div>
+                                    <p class="mb-1 fw-semibold">Lorem ipsum</p>
+                                    <p class="mb-1">
+                                        <span class="fw-bold fs-6">₹ 35.00</span>
+                                        <span class="text-muted text-decoration-line-through small ms-1">₹ 55.00</span>
+                                    </p>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                        <button class="btn btn-sm btn-success">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 4 -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="product-card h-100">
+                                <div class="position-relative text-center p-3">
+                                    <img src="http://static.photos/food/240x180/4" class="img-fluid" alt="Product 4">
+                                    <span class="discount-badge">25%</span>
+                                </div>
+                                <div class="px-3 pb-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="text-warning small me-1">
+                                            ★★★★☆
+                                        </div>
+                                        <span class="text-muted small">(4.0)</span>
+                                    </div>
+                                    <p class="mb-1 fw-semibold">Lorem ipsum</p>
+                                    <p class="mb-1">
+                                        <span class="fw-bold fs-6">₹ 35.00</span>
+                                        <span class="text-muted text-decoration-line-through small ms-1">₹ 55.00</span>
+                                    </p>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                        <button class="btn btn-sm btn-success">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 5 -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="product-card h-100">
+                                <div class="position-relative text-center p-3">
+                                    <img src="http://static.photos/food/240x180/5" class="img-fluid" alt="Product 5">
+                                    <span class="discount-badge">25%</span>
+                                </div>
+                                <div class="px-3 pb-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="text-warning small me-1">
+                                            ★★★★☆
+                                        </div>
+                                        <span class="text-muted small">(4.0)</span>
+                                    </div>
+                                    <p class="mb-1 fw-semibold">Lorem ipsum</p>
+                                    <p class="mb-1">
+                                        <span class="fw-bold fs-6">₹ 35.00</span>
+                                        <span class="text-muted text-decoration-line-through small ms-1">₹ 55.00</span>
+                                    </p>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                        <button class="btn btn-sm btn-success">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 6 -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="product-card h-100">
+                                <div class="position-relative text-center p-3">
+                                    <img src="http://static.photos/food/240x180/6" class="img-fluid" alt="Product 6">
+                                    <span class="discount-badge">25%</span>
+                                </div>
+                                <div class="px-3 pb-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="text-warning small me-1">
+                                            ★★★★☆
+                                        </div>
+                                        <span class="text-muted small">(4.0)</span>
+                                    </div>
+                                    <p class="mb-1 fw-semibold">Lorem ipsum</p>
+                                    <p class="mb-1">
+                                        <span class="fw-bold fs-6">₹ 35.00</span>
+                                        <span class="text-muted text-decoration-line-through small ms-1">₹ 55.00</span>
+                                    </p>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                        <button class="btn btn-sm btn-success">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 7 -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="product-card h-100">
+                                <div class="position-relative text-center p-3">
+                                    <img src="http://static.photos/food/240x180/7" class="img-fluid" alt="Product 7">
+                                    <span class="discount-badge">25%</span>
+                                </div>
+                                <div class="px-3 pb-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="text-warning small me-1">
+                                            ★★★★☆
+                                        </div>
+                                        <span class="text-muted small">(4.0)</span>
+                                    </div>
+                                    <p class="mb-1 fw-semibold">Lorem ipsum</p>
+                                    <p class="mb-1">
+                                        <span class="fw-bold fs-6">₹ 35.00</span>
+                                        <span class="text-muted text-decoration-line-through small ms-1">₹ 55.00</span>
+                                    </p>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                        <button class="btn btn-sm btn-success">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 8 -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="product-card h-100">
+                                <div class="position-relative text-center p-3">
+                                    <img src="http://static.photos/food/240x180/8" class="img-fluid" alt="Product 8">
+                                    <span class="discount-badge">25%</span>
+                                </div>
+                                <div class="px-3 pb-3">
+                                    <div class="d-flex align-items-center">
+                                        <div class="text-warning small me-1">
+                                            ★★★★☆
+                                        </div>
+                                        <span class="text-muted small">(4.0)</span>
+                                    </div>
+                                    <p class="mb-1 fw-semibold">Lorem ipsum</p>
+                                    <p class="mb-1">
+                                        <span class="fw-bold fs-6">₹ 35.00</span>
+                                        <span class="text-muted text-decoration-line-through small ms-1">₹ 55.00</span>
+                                    </p>
+                                    <div class="d-grid gap-2">
+                                        <button class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                        <button class="btn btn-sm btn-success">Buy Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Right Illustration -->
+                <div class="col-lg-3 d-none d-lg-block">
+                    <div class="h-100 d-flex flex-column justify-content-between">
+
+                        <!-- Atas -->
+                        <div class="d-flex justify-content-center">
+                            <img src="right-food-1.png" class="img-fluid" alt="Organic Illustration">
+                        </div>
+
+                        <!-- Bawah -->
+                        <div class="d-flex justify-content-center">
+                            <img src="right-food-2.png" class="img-fluid" alt="Organic Illustration">
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- TRENDING PRODUCTS -->
+    <section class="py-5 bg-beige-100">
+        <div class="container">
+            <h2 class="text-center fw-bold text-veggie-800 mb-4">Trending Products</h2>
+            <div class="row g-4 mt-3">
+                <!-- Card 1 -->
+                <div class="col-12 col-md-4">
+                    <div class="card h-100 rounded-4 shadow-soft border-0">
+                        <img src="http://static.photos/food/640x360/5" class="card-img-top" alt="Fresh Kale">
+                        <div class="card-body">
+                            <span class="badge rounded-pill bg-veggie-100 text-veggie-800 mb-2">Trending</span>
+                            <h5 class="card-title fw-bold text-veggie-800">Fresh Kale Bundle</h5>
+                            <p class="card-text text-beige-600">
+                                Packed with nutrients and flavor, our organic kale is hand-picked at peak freshness.
+                            </p>
+                            <a href="#" class="text-success text-decoration-none d-flex align-items-center">
+                                Shop Now
+                                <i data-feather="arrow-right" class="ms-1" style="width:16px;height:16px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-12 col-md-4">
+                    <div class="card h-100 rounded-4 shadow-soft border-0">
+                        <img src="http://static.photos/food/640x360/6" class="card-img-top" alt="Rainbow Carrots">
+                        <div class="card-body">
+                            <span class="badge rounded-pill"
+                                style="background-color:#ffedd5;color:#9a3412;">Popular</span>
+                            <h5 class="card-title fw-bold text-veggie-800 mt-2">Rainbow Carrots</h5>
+                            <p class="card-text text-beige-600">
+                                A colorful mix of organic carrots that are as nutritious as they are beautiful.
+                            </p>
+                            <a href="#" class="text-success text-decoration-none d-flex align-items-center">
+                                Shop Now
+                                <i data-feather="arrow-right" class="ms-1" style="width:16px;height:16px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-12 col-md-4">
+                    <div class="card h-100 rounded-4 shadow-soft border-0">
+                        <img src="http://static.photos/food/640x360/7" class="card-img-top" alt="Heirloom Tomatoes">
+                        <div class="card-body">
+                            <span class="badge rounded-pill"
+                                style="background-color:#ccfbf1;color:#115e59;">Fresh</span>
+                            <h5 class="card-title fw-bold text-veggie-800 mt-2">Heirloom Tomatoes</h5>
+                            <p class="card-text text-beige-600">
+                                Bursting with flavor, our organic heirloom tomatoes are perfect for salads and sauces.
+                            </p>
+                            <a href="#" class="text-success text-decoration-none d-flex align-items-center">
+                                Shop Now
+                                <i data-feather="arrow-right" class="ms-1" style="width:16px;height:16px;"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="text-beige-100 pt-5 pb-3">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12 col-md-3">
+                    <h5 class="fw-bold mb-3">VeggieVibe Market</h5>
+                    <p class="small text-beige-300 mb-0">
+                        Organic, fresh, and sustainably sourced vegetables to support your healthy lifestyle.
+                    </p>
+                </div>
+                <div class="col-6 col-md-3">
+                    <h6 class="fw-semibold mb-3">Quick Links</h6>
+                    <ul class="list-unstyled small text-beige-300">
+                        <li><a href="#" class="text-beige-300 text-decoration-none d-block mb-1">Home</a></li>
+                        <li><a href="#" class="text-beige-300 text-decoration-none d-block mb-1">Shop</a></li>
+                        <li><a href="#" class="text-beige-300 text-decoration-none d-block mb-1">About Us</a></li>
+                        <li><a href="#" class="text-beige-300 text-decoration-none d-block mb-1">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md-3">
+                    <h6 class="fw-semibold mb-3">Support</h6>
+                    <ul class="list-unstyled small text-beige-300">
+                        <li><a href="#" class="text-beige-300 text-decoration-none d-block mb-1">Help Center</a></li>
+                        <li><a href="#" class="text-beige-300 text-decoration-none d-block mb-1">FAQs</a></li>
+                        <li><a href="#" class="text-beige-300 text-decoration-none d-block mb-1">Shipping & Returns</a>
+                        </li>
+                        <li><a href="#" class="text-beige-300 text-decoration-none d-block mb-1">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-12 col-md-3">
+                    <h6 class="fw-semibold mb-3">Newsletter</h6>
+                    <p class="small text-beige-300">
+                        Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.
+                    </p>
+                    <form class="d-flex flex-column flex-sm-row gap-2">
+                        <input type="email" class="form-control form-control-sm rounded-pill"
+                            placeholder="Enter your email">
+                        <button class="btn btn-veggie btn-sm rounded-pill px-3" type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <hr class="border-secondary mt-4">
+            <p class="text-center small text-beige-300 mb-0">
+                © 2025 VeggieVibe Market. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS + Feather init -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        feather.replace();
+    </script>
+</body>
+
+</html>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // elemen
+    var track   = document.querySelector('#popularCategories .categories-track');
+    var prevBtn = document.getElementById('catPrev');
+    var nextBtn = document.getElementById('catNext');
+
+    if (!track || !prevBtn || !nextBtn) {
+        console.error('Track atau tombol tidak ditemukan. Cek id / class di HTML.');
+        return;
+    }
+
+    // --- fungsi bantu untuk tombol manual ---
+    function getScrollAmount() {
+        var firstCard = track.querySelector('.category-card');
+        var gap = 16; // kira2 dari gap-3 bootstrap
+        return firstCard ? firstCard.offsetWidth + gap : 250;
+    }
+
+    // tombol kiri
+    prevBtn.addEventListener('click', function () {
+        track.scrollLeft -= getScrollAmount();
+    });
+
+    // tombol kanan
+    nextBtn.addEventListener('click', function () {
+        track.scrollLeft += getScrollAmount();
+    });
+
+    // --- AUTO SCROLL SMOOTH BOLAK-BALIK (JS murni) ---
+    var direction = 1;    // 1 = ke kanan, -1 = ke kiri
+    var speed     = 0.;  // pixel per frame (atur sesuai selera: 0.2 pelan, 1 cepat)
+
+    function animate() {
+        var maxScroll = track.scrollWidth - track.clientWidth;
+        var current   = track.scrollLeft;
+
+        // ganti arah di ujung kanan & kiri
+        if (current >= maxScroll) {
+            direction = -1;
+        } else if (current <= 0) {
+            direction = 1;
+        }
+
+        track.scrollLeft = current + speed * direction;
+
+        // panggil lagi frame berikutnya
+        window.requestAnimationFrame(animate);
+    }
+
+    // mulai animasi
+    animate();
+});
+</script>
+
+
