@@ -6,10 +6,10 @@ SayurKu adalah platform e-commerce frontend murni yang dirancang untuk menjual s
 
 Berikut adalah beberapa tampilan dari website SayurKu:
 
-![Tampilan Beranda](img/display/home.png.png)
+![Tampilan Beranda](img/display/home.png)
 *Halaman beranda dengan hero section dan produk-produk organis*
 
-![Tampilan Checkout](img/display/checkout-form.png.png)
+![Tampilan Checkout](img/display/checkout-form.png)
 *Proses checkout dengan formulir informasi pelanggan*
 
 ## Fitur-fitur
