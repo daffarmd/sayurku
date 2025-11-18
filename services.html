@@ -6,45 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Layanan Kami | SayurKu</title>
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+     <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-    <!-- NAVBAR (COPY DARI index) -->
-    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="img/SayurKu-Logo.png" style="height:90px;" alt="Logo SayurKu">
-            </a>
+    <!-- NAVBAR COPY DARI HOMEPAGE -->
+    <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="img/SayurKu-Logo.png" alt="Logo SayurKu" class="me-2" style="height:90px; width:auto;">
+      </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+      <!-- Toggler -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-            <div class="collapse navbar-collapse" id="mainNavbar">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-4">
-                    <li class="nav-item">
-                        <a class="nav-link fw-semibold text-success" href="index.html">Beranda</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="about.html">Tentang Kami</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="services.html">Layanan</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="categories.html">Kategori</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-secondary" href="contact.html">Kontak</a>
-                    </li>
-                </ul>
-            </div>
+      <!-- Menu -->
+      <div class="collapse navbar-collapse" id="mainNavbar">
+        <!-- Middle nav -->
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-lg-4">
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="about.html">Tentang Kami</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fw-semibold text-success" href="services.html">Layanan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-secondary" href="categories.html">Kategori</a>
+          </li>
+          <li class="nav-item">
+            <!-- aktif di sini -->
+            <a class="nav-link text-secondary" href="contact.html">Kontak</a>
+          </li>
+        </ul>
+
+        <!-- Right actions -->
+        <div class="d-flex align-items-center gap-3">
+          <a href="#" class="btn btn-success px-4 py-2 rounded-2">Beli Sekarang</a>
+
+          <a href="#" class="d-flex align-items-center text-success text-decoration-none">
+            <i class="bi bi-cart me-1"></i>
+            <span>Keranjang</span>
+          </a>
+
+          <a href="#" class="d-flex align-items-center text-success text-decoration-none">
+            <i class="bi bi-person me-1"></i>
+            <span>Masuk</span>
+          </a>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 
 
     <!-- HEADER -->
@@ -61,7 +83,7 @@
                 </div>
 
                 <div class="col-lg-6 text-center">
-                    <img src="img/services-hero.png" class="img-fluid rounded-4 shadow-sm" alt="Services">
+                    <img src="img/person-subscribtion.png" class="img-fluid" style="height: 350px;" alt="Services">
                 </div>
 
             </div>
