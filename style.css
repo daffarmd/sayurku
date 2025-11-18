@@ -1,0 +1,375 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background-color: #fafaf9;
+}
+
+.category-icon {
+  width: 80px;
+  height: 80px;
+}
+
+footer {
+  background-color: #1b2430;
+  color: #ffffff;
+  padding: 40px 0;
+}
+
+.title-underline {
+  width: 100px;
+  height: 3px;
+  background-color: #84cc16;
+}
+
+/* ================= POPULAR CATEGORIES =================== */
+.popular-categories .title-underline {
+  width: 120px;
+  height: 3px;
+  background-color: #84cc16;
+}
+
+.apple-splash {
+  max-width: 380px;
+  width: 100%;
+  margin-left: auto;
+  display: block;
+  margin-left: -40px;
+  margin-top: -20px;
+}
+
+.popular-categories .row {
+  align-items: center !important;
+}
+
+.categories-track {
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.categories-track::-webkit-scrollbar {
+  display: none;
+}
+
+.categories-track {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.category-card {
+  min-width: 260px;
+  border-radius: 18px;
+  padding: 16px 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  flex: 0 0 auto;
+}
+
+.bg-category-1 {
+  background-color: #7dd3fc;
+}
+
+.bg-category-2 {
+  background-color: #fb923c;
+}
+
+.bg-category-3 {
+  background-color: #22c55e;
+}
+
+.bg-category-4 {
+  background-color: #f97373;
+}
+
+.category-img {
+  width: 70px;
+  height: auto;
+  object-fit: contain;
+}
+
+.nav-round-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid #84cc16;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background-color: #e4f7c5;
+  font-weight: bold;
+}
+
+/* =============== TRENDING PRODUCT =============== */
+ .trending-section {
+  background-image: url("img/bg-trending-product.png"); 
+  background-size: cover;       /* gambar menutupi area section */
+  background-repeat: no-repeat; /* tidak mengulang */
+  background-position: center;  /* gambar posisinya tepat */
+  padding: 60px 0;
+}
+
+
+.trending-title {
+  font-weight: 700;
+  margin-bottom: 35px;
+}
+
+.trending-card {
+  border-radius: 18px;
+  overflow: hidden;
+  border: none;
+  height: 180px;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.trending-card .bg-image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(0.9);
+}
+
+.trending-card .overlay {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.btn-shop {
+  background-color: #28a745;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 20px;
+  color: white;
+  font-weight: 500;
+}
+
+/* ================== Best Selling Items ================ */
+.best-selling-section {
+  background-color: #ffffff;
+}
+
+/* Card produk */
+.product-card {
+  border-radius: 8px;
+  border: 1px solid #28a745;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Badge -25% */
+.discount-badge {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  background-color: #28a745;
+  color: #fff;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+}
+
+/* gambar produk di tengah */
+.product-img-wrapper img {
+  max-height: 130px;
+  object-fit: contain;
+}
+
+/* harga */
+.price .current-price {
+  font-weight: 700;
+  margin-right: 6px;
+}
+
+.price .old-price {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* tombol view more */
+.btn-view-more {
+  font-size: 0.9rem;
+}
+
+/* biar bintang ga terlalu besar */
+.text-warning.small {
+  letter-spacing: 1px;
+}
+
+/* =============== PROMOSI IMG ================ */
+.fruit-banner {
+  position: relative;
+  background-color: #8ec2f5;
+  border-radius: 28px;
+  padding: 40px 55px;
+  overflow: hidden;
+}
+
+.fruit-banner::before {
+  content: "ORANGE FRUIT";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 90px;
+  font-weight: 700;
+  letter-spacing: 6px;
+  color: #ffffff;
+  opacity: 0.12;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.fruit-banner-text h2 {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-weight: 700;
+  font-style: italic;
+  color: #ffffff;
+}
+
+.fruit-banner-text p {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-style: italic;
+  color: #ffffff;
+  max-width: 420px;
+}
+
+/* gambar */
+.fruit-banner-img img {
+  max-width: 520px;
+  display: block;
+}
+
+/* responsive */
+@media (max-width: 767.98px) {
+  .fruit-banner {
+    padding: 30px 24px;
+  }
+
+  .fruit-banner::before {
+    font-size: 60px;
+  }
+
+  .fruit-banner-text p {
+    max-width: 100%;
+  }
+}
+
+
+/* ================= SUBSCRIBE ================ */
+/* background hijau muda + pattern di kiri (opsional) */
+.subscribe-section {
+  background-color: #d9ffb3;       
+  position: relative;
+  overflow: hidden;
+}
+
+.subscribe-title {
+  font-weight: 700;
+  color: #1b2430;
+}
+
+/* form */
+.subscribe-input {
+  border-radius: 999px;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  box-shadow: 0 0 0 1px #e0e0e0 inset;
+}
+
+.subscribe-input:focus {
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.1);
+}
+
+.subscribe-btn {
+  background-color: #263144;
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  white-space: nowrap;
+}
+
+.subscribe-btn:hover {
+  background-color: #151c28;
+}
+
+/* responsive */
+@media (max-width: 991.98px) {
+  .subscribe-section::before {
+    opacity: 0.15;
+    width: 180px;
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+  }
+
+  .subscribe-input {
+    margin-right: 0 !important;
+    margin-bottom: 0.5rem;
+    width: 100%;
+  }
+
+  .subscribe-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ============================================================= */
+/* ======================== ABOUT US =========================== */
+/* ============================================================= */
+.about-hero {
+    background-color: #f0fce5;
+    border-radius: 18px;
+}
+
+.about-hero img {
+    max-width: 420px;
+}
+
+/* ============================================================= */
+/* ======================== SERVICE HERO =========================== */
+/* ============================================================= */
+.service-hero {
+    background-color: #f0fce5;
+    border-radius: 18px;
+}
+
+.service-card {
+    transition: 0.2s ease;
+    border: 1px solid #e5e5e5;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+
+/* efek hover khusus di halaman categories */
+.category-card {
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+
+
+
