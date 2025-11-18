@@ -96,6 +96,12 @@ footer {
   padding: 0;
   background-color: #e4f7c5;
   font-weight: bold;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.nav-round-btn:hover {
+  background-color: #7bbd4a; /* Darker green on hover */
+  border-color: #6ba534; /* Darker border on hover */
 }
 
 /* =============== TRENDING PRODUCT =============== */
@@ -138,6 +144,14 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1)); /* Semi-transparent background for better text readability */
+  color: #ffffff; /* Ensure white text for readability over dark background */
+}
+
+.trending-card .overlay h5 {
+  color: #ffffff; /* Ensure text is white for readability */
+  position: relative;
+  z-index: 3; /* Ensure text is above the gradient */
 }
 
 .btn-shop {
@@ -147,6 +161,12 @@ footer {
   border-radius: 20px;
   color: white;
   font-weight: 500;
+  transition: background-color 0.3s ease; /* Add transition for smooth hover effect */
+}
+
+.btn-shop:hover {
+  background-color: #1e7e34; /* Darker green on hover */
+  color: white; /* Ensure text remains white */
 }
 
 /* ================== Best Selling Items ================ */
@@ -155,13 +175,17 @@ footer {
 }
 
 /* Card produk */
+.card.product-card,
 .product-card {
   border-radius: 8px;
   border: 1px solid #28a745;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.06);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+  background-color: #ffffff; /* Ensure a white background for better text readability */
+  color: #000000; /* Ensure dark text for readability */
 }
 
+.card.product-card:hover,
 .product-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
@@ -180,21 +204,52 @@ footer {
 }
 
 /* gambar produk di tengah */
+.card .product-img-wrapper img,
 .product-img-wrapper img {
   max-height: 130px;
   object-fit: contain;
+  background-color: #f8f9fa; /* Light gray background to make images more visible */
+  padding: 10px;
+  border-radius: 4px;
 }
 
 /* harga */
 .price .current-price {
   font-weight: 700;
   margin-right: 6px;
+  color: #000000; /* Ensure dark text for readability */
 }
 
 .price .old-price {
   text-decoration: line-through;
-  color: #999;
+  color: #6c757d;
   font-size: 0.9rem;
+}
+
+/* tombol dalam product card */
+.card.product-card .btn-outline-secondary,
+.product-card .btn-outline-secondary {
+  color: #6c757d;
+  border-color: #6c757d;
+}
+
+.card.product-card .btn-outline-secondary:hover,
+.product-card .btn-outline-secondary:hover {
+  background-color: #5a6268; /* Darker gray on hover */
+  border-color: #545b62;
+  color: white;
+}
+
+.card.product-card .btn-success,
+.product-card .btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.card.product-card .btn-success:hover,
+.product-card .btn-success:hover {
+  background-color: #1e7e34; /* Darker green on hover */
+  border-color: #1c7430;
 }
 
 /* tombol view more */
